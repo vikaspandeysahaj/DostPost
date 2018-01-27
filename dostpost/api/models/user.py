@@ -4,6 +4,7 @@ from api.models.master_marital_status import MasterMaritalStatus
 
 
 class User(models.Model):
+    employee_id = models.CharField(max_length=100, unique=True)
     full_name = models.CharField(max_length=50, null=True, blank=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     middle_name = models.CharField(max_length=50, null=True, blank=True)
