@@ -8,7 +8,7 @@ from api.models.master_education_type import *
 from api.models.master_interest import *
 from api.models.master_location import *
 from api.models.master_marital_status import *
-from api.models.master_notification import *
+from api.models.master_notification_type import *
 from api.models.master_post_type import *
 from api.models.master_project import *
 from api.models.master_public_site import *

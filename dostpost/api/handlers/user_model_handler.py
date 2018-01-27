@@ -6,7 +6,6 @@ class UserModelHandler():
         self.model = User
 
     def insert(self, employee_id = None, full_name=None, first_name = None, middle_name = None, last_name = None, Gender = None, DOB = None, marital_status = None):
-
         m = self.model(
             employee_id = employee_id,
             full_name = full_name,
@@ -35,9 +34,6 @@ class UserModelHandler():
         else:
             raise Exception("User not found for id %s "%(id))
         return m
-
-    def delete(self):
-        pass
 
     def find_all(self):
         m = self.model.objects.all()

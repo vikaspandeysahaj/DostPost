@@ -1,8 +1,5 @@
 from django.db import models
 
-from api.models.master_company import MasterCompany
-from api.models.master_designation import MasterDesignation
-from api.models.master_location import MasterLocation
 from api.models.master_public_site import MasterPublicSite
 from api.models.user import User
 

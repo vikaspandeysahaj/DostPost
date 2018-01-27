@@ -1,36 +1,36 @@
-from api.models import MasterMaritalStatus
+from api.models import MasterSkill
 
 
-class MasterMaritalStatusModelHandler():
+class MasterSkillModelHandler():
 
     def __init__(self):
-        self.model = MasterMaritalStatus
+        self.model = MasterSkill
 
-    def insert(self, marital_status = None):
-        m = self.find_by_status(marital_status)
+    def insert(self, skill_name = None):
+        m = self.find_by_skill_name(skill_name)
         if not m:
             m = self.model.objects.create()
-            m.status = marital_status
+            m.skill_name = skill_name
             m.full_clean()
             m.save()
         return m
 
-    def update(self, id, marital_status = None):
+    def update(self, id, skill_name = None):
         m = self.find_by_id(id=id)
         if m:
-            m.status = marital_status
+            m.skill_name = skill_name
             m.full_clean()
             m.save()
         else:
-            raise Exception("marital status not found for id %s "%(id))
+            raise Exception("skill_name not found for id %s "%(id))
         return m
 
     def find_all(self):
         m = self.model.objects.all()
         return m
 
-    def find_by_status(self, marital_status):
-        m = self.model.objects.filter(status=marital_status).first()
+    def find_by_skill_name(self, skill_name):
+        m = self.model.objects.filter(skill_name=skill_name).first()
         return m
 
     def find_by_id(self, id):
