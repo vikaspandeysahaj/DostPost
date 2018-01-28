@@ -5,7 +5,7 @@ class UserModelHandler():
     def __init__(self):
         self.model = User
 
-    def insert(self, employee_id = None, full_name=None, first_name = None, middle_name = None, last_name = None, Gender = None, DOB = None, marital_status = None):
+    def insert(self, employee_id = None, full_name=None, first_name = None, middle_name = None, last_name = None, Gender = None, DOB = None, marital_status = None, secret_key=None):
         m = self.model(
             employee_id = employee_id,
             full_name = full_name,
@@ -14,7 +14,8 @@ class UserModelHandler():
             last_name = last_name,
             Gender = Gender,
             DOB = DOB,
-            marital_status = marital_status)
+            marital_status = marital_status,
+            secret_key = secret_key)
         m.full_clean()
         m.save()
         return m
@@ -45,4 +46,8 @@ class UserModelHandler():
 
     def modelname(self):
         return self.model.__name__
+
+    def find_by_emp_id_and_key(self, username, password):
+        m = self.model.objects.filter(employee_id=username, secret_key=password).first()
+        return m
 

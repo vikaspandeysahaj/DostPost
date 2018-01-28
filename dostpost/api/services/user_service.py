@@ -7,8 +7,8 @@ from api.serializers.user_serializers import UserListSerializer, UserProfileSeri
 
 class UserService():
 
-    def __init__(self):
-        pass
+    def __init__(self, current_user):
+        self.current_user = current_user
 
     def get_user_list(self, page_size = None, page_number = None):
         queryset = UserModelHandler().find_all()

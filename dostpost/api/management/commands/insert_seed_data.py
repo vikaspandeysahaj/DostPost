@@ -27,9 +27,9 @@ class Command(BaseCommand):
             married = marital_model_handler.find_by_status("Married")
             single = marital_model_handler.find_by_status("Single")
 
-            user_model_handler.insert(employee_id = "1004", full_name="Vikas Pandey", first_name="Vikas", last_name="Pandey", Gender="Male", DOB="06-08-1986", marital_status=married)
-            user_model_handler.insert(employee_id = "1005",full_name="Vijay Kumar", first_name="Vijay", last_name="Kumar", Gender="Male", DOB="31-03-1986", marital_status=married)
-            user_model_handler.insert(employee_id = "1006", full_name="Riyas P", first_name="Riyas", last_name="P", Gender="Male", DOB="01-12-1999", marital_status=single)
+            user_model_handler.insert(employee_id = "1004", full_name="Vikas Pandey", first_name="Vikas", last_name="Pandey", Gender="Male", DOB="06-08-1986", marital_status=married, secret_key = "PassVikas")
+            user_model_handler.insert(employee_id = "1005",full_name="Vijay Kumar", first_name="Vijay", last_name="Kumar", Gender="Male", DOB="31-03-1986", marital_status=married, secret_key = "PassVijay")
+            user_model_handler.insert(employee_id = "1006", full_name="Riyas P", first_name="Riyas", last_name="P", Gender="Male", DOB="01-12-1999", marital_status=single, secret_key = "PassRiyas")
 
             self.stdout.write(self.style.SUCCESS('Successfully inserted into User.'))
 

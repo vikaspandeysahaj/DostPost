@@ -12,3 +12,4 @@ class User(models.Model):
     DOB = models.CharField(max_length=50, null=True, blank=True)
     Gender = models.CharField(max_length=50, null=True, blank=True)
     marital_status = models.ForeignKey(MasterMaritalStatus, on_delete=models.CASCADE)
+    secret_key = models.CharField(max_length=50, null=True, blank=True)
