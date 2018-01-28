@@ -8,12 +8,13 @@ class ProjectInfoModelHandler():
 
     def insert(self, user = None, project = None, location = None, start_date = None, end_date = None):
 
-        m = self.model.objects.create()
-        m.user = user
-        m.project = project
-        m.location = location
-        m.start_date = start_date
-        m.end_date = end_date
+        m = self.model(
+            user = user,
+            project = project,
+            location = location,
+            start_date = start_date,
+            end_date = end_date
+        )
         m.full_clean()
         m.save()
         return m
@@ -44,7 +45,7 @@ class ProjectInfoModelHandler():
         return m
 
     def find_by_user(self, user):
-        m = self.model.objects.filter(user=user).first()
+        m = self.model.objects.filter(user=user)
         return m
 
     def find_by_id_and_user(self, id, user):
