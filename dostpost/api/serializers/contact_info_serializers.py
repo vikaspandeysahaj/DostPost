@@ -5,9 +5,9 @@ from api.models import ContactInfo
 
 
 class ContactInfoSerializer(ModelSerializer):
-    location_name = CharField(source='location.location_name')
+    location = CharField(source='location.location_name')
     class Meta:
         model = ContactInfo
-        fields = ('id','location_name', 'email', 'phone', 'mobile', 'address')
+        fields = ('id','location', 'email', 'phone', 'mobile', 'address')
 
 

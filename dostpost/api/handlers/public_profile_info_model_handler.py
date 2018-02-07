@@ -8,10 +8,10 @@ class PublicProfileInfoModelHandler():
 
     def insert(self, user = None, public_site = None, url = None):
 
-        m = self.model.objects.create()
-        m.user = user
-        m.public_site = public_site
-        m.url = url
+        m = self.model(
+                user = user,
+                public_site = public_site,
+                url = url)
         m.full_clean()
         m.save()
         return m
@@ -40,7 +40,7 @@ class PublicProfileInfoModelHandler():
         return m
 
     def find_by_user(self, user):
-        m = self.model.objects.filter(user=user).first()
+        m = self.model.objects.filter(user=user)
         return m
 
     def find_by_id_and_user(self, id, user):

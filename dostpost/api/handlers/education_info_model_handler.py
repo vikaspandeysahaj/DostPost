@@ -8,14 +8,13 @@ class EducationInfoModelHandler():
 
     def insert(self,user = None, university = None, location = None, education_type = None, start_date = None, end_date = None):
 
-        m = self.model.objects.create()
-        m.user = user
-        m.university = university
-        m.location = location
-        m.education_type = education_type
-        m.start_date = start_date
-        m.end_date = end_date
-
+        m = self.model(
+                user = user,
+                university = university,
+                location = location,
+                education_type = education_type,
+                start_date = start_date,
+                end_date = end_date)
         m.full_clean()
         m.save()
         return m
@@ -24,10 +23,10 @@ class EducationInfoModelHandler():
     def update(self, id, user = None, university = None, location = None, education_type = None, start_date = None, end_date = None):
         m = self.find_by_id_and_user(id=id, user=user)
         if m:
-            m.university = university,
-            m.location = location,
-            m.education_type = education_type,
-            m.start_date = start_date,
+            m.university = university
+            m.location = location
+            m.education_type = education_type
+            m.start_date = start_date
             m.end_date = end_date
             m.full_clean()
             m.save()
@@ -48,7 +47,7 @@ class EducationInfoModelHandler():
         return m
 
     def find_by_user(self, user):
-        m = self.model.objects.filter(user=user).first()
+        m = self.model.objects.filter(user=user)
         return m
 
     def find_by_id_and_user(self, id, user):

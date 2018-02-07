@@ -7,11 +7,10 @@ class SkillInfoModelHandler():
         self.model = SkillInfo
 
     def insert(self, user = None, skill = None, rank = None):
-
-        m = self.model.objects.create()
-        m.user = user
-        m.skill = skill
-        m.rank = rank
+        m = self.model(
+            user = user,
+            skill = skill,
+            rank = rank)
         m.full_clean()
         m.save()
         return m
@@ -40,7 +39,7 @@ class SkillInfoModelHandler():
         return m
 
     def find_by_user(self, user):
-        m = self.model.objects.filter(user=user).first()
+        m = self.model.objects.filter(user=user)
         return m
 
     def find_by_id_and_user(self, id, user):

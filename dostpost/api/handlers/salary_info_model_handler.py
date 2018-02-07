@@ -7,11 +7,10 @@ class SalaryInfoModelHandler():
         self.model = SalaryInfo
 
     def insert(self, user = None, salary = None, revised_date = None):
-
-        m = self.model.objects.create()
-        m.user = user
-        m.salary = salary
-        m.revised_date = revised_date
+        m = self.model(
+            user = user,
+            salary = salary,
+            revised_date = revised_date)
         m.full_clean()
         m.save()
         return m

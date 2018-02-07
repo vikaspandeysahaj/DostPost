@@ -7,14 +7,14 @@ class WorkInfoModelHandler():
         self.model = WorkInfo
 
     def insert(self, user = None, company = None, location = None, designation = None, start_date = None, end_date = None):
-
-        m = self.model.objects.create()
-        m.user = user
-        m.company = company
-        m.location = location
-        m.designation = designation
-        m.start_date = start_date
-        m.end_date = end_date
+        m = self.model(
+            user = user,
+            company = company,
+            location = location,
+            designation = designation,
+            start_date = start_date,
+            end_date = end_date
+        )
         m.full_clean()
         m.save()
         return m
@@ -46,7 +46,7 @@ class WorkInfoModelHandler():
         return m
 
     def find_by_user(self, user):
-        m = self.model.objects.filter(user=user).first()
+        m = self.model.objects.filter(user=user)
         return m
 
     def find_by_id_and_user(self, id, user):

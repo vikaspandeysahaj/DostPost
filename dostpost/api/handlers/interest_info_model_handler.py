@@ -7,10 +7,10 @@ class InterestInfoModelHandler():
         self.model = InterestInfo
 
     def insert(self,user = None, interest = None, desc = None):
-        m = self.model.objects.create()
-        m.user = user
-        m.interest = interest
-        m.desc = desc
+        m = self.model(
+            user = user,
+            interest = interest,
+            desc = desc)
         m.full_clean()
         m.save()
         return m
@@ -40,7 +40,7 @@ class InterestInfoModelHandler():
         return m
 
     def find_by_user(self, user):
-        m = self.model.objects.filter(user=user).first()
+        m = self.model.objects.filter(user=user)
         return m
 
     def find_by_id_and_user(self, id, user):

@@ -59,4 +59,23 @@ class ProjectService():
         except Exception as ex:
             return json.dumps({"Error":"Not able to remove the project : %s"%(ex.message)})
 
+    def update_user_project_info(self, project_json):
+        try:
+            location = MasterLocationModelHandler().insert(location_name=project_json["location"])
+            project = MasterProjectModelHandler().insert(project_name=project_json["project"])
+
+            updated_project_info = ProjectInfoModelHandler().update(
+                id = project_json["id"],
+                user = self.current_user,
+                project = project,
+                location = location,
+                start_date = project_json["start_date"],
+                end_date = project_json["end_date"])
+
+            data = ProjectInfoSerializer(updated_project_info).data
+            json_data = JSONRenderer().render(data)
+            return json_data
+        except Exception as ex:
+            return json.dumps({"Error":"Not able to update the project : %s"%(ex.message)})
+
 
